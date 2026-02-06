@@ -3,25 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Gửi Misa của anh</title>
+    <title>Món quà cho Misa ✨</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
+    <img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHpueG56ZzRyc2ZpZzRyc2ZpZzRyc2ZpZzRyc2ZpZzRyc2ZpZzR5JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1z/v7RdkXWpI82PzS8xO0/giphy.gif" class="kitty-corner top-left">
+    <img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHpueG56ZzRyc2ZpZzRyc2ZpZzRyc2ZpZzRyc2ZpZzRyc2ZpZzR5JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1z/v7RdkXWpI82PzS8xO0/giphy.gif" class="kitty-corner bottom-right">
+
+    <audio id="myAudio" loop>
+        <source src="nhac.mp3" type="audio/mpeg">
+    </audio>
+
+    <div id="login-page" class="container">
         <div class="glass-card">
-            <div class="heart-icon">💖</div>
-            <h1 class="title">Happy Valentine's Day</h1>
-            <h2 class="name">Nguyễn Phương Trang</h2>
-            <div class="nickname">(Misa 2006)</div>
-            <p class="message">
-                Gửi cô gái tuyệt vời nhất của anh. <br>
-                Chúc em một ngày 14/2 luôn rạng rỡ, ngọt ngào. <br>
-                Cảm ơn Misa đã đến bên anh! ✨
-            </p>
-            <div class="footer">Mãi yêu em!</div>
+            <img src="https://i.pinimg.com/originals/f1/6b/64/f16b6473183574d75d4a46452243d6c0.png" class="kitty-main">
+            <h2 class="title">Chào Misa! 🎀</h2>
+            <p class="subtitle">Nhập tên để nhận quà từ Anh nhé:</p>
+            <input type="text" id="inputName" placeholder="Tên thật của em...">
+            <input type="text" id="inputNickName" placeholder="Biệt danh của em...">
+            <button onclick="startExperience()">Mở Quà 🎁</button>
         </div>
     </div>
+
+    <div id="wish-page" class="container wide" style="display: none;">
+        <div class="glass-card">
+            <div class="heart-icon">💖</div>
+            <h1 class="title">Happy Valentine!</h1>
+            <h2 id="displayName" class="name"></h2>
+            <div id="displayNickName" class="nickname"></div>
+            <p class="message" id="personalWish"></p>
+            <div class="footer">Mãi yêu bé Misa của anh! ✨</div>
+        </div>
+    </div>
+
     <canvas id="heartCanvas"></canvas>
     <script src="script.js"></script>
 </body>

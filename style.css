@@ -1,95 +1,80 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body { 
+    overflow: hidden; 
+    background: linear-gradient(135deg, #ffdeeb, #ffafbd);
+    font-family: 'Quicksand', sans-serif; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    min-height: 100vh; 
+    width: 100%; 
 }
 
-body {
-    overflow: hidden;
-    background: linear-gradient(135deg, #ffafbd, #ffc3a0);
-    font-family: 'Quicksand', sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    width: 100%;
-}
-
-.container {
-    z-index: 10;
-    width: 90%; /* Chiếm 90% chiều rộng màn hình điện thoại */
-    max-width: 400px; /* Nhưng không quá 400px trên máy tính */
-    padding: 20px;
-}
-
-.glass-card {
-    background: rgba(255, 255, 255, 0.2);
-    box-shadow: 0 8px 32px 0 rgba(214, 51, 132, 0.3);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border-radius: 25px;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    padding: 30px 20px;
-    text-align: center;
-    animation: fadeIn 1.5s ease-out;
-}
-
-.title {
-    font-family: 'Dancing Script', cursive;
-    color: #d63384;
-    font-size: clamp(2rem, 8vw, 3rem); /* Tự co giãn chữ theo màn hình */
-    margin: 10px 0;
-}
-
-.name {
-    color: #fff;
-    font-size: clamp(1.2rem, 5vw, 1.8rem);
-    text-shadow: 1px 1px 5px rgba(0,0,0,0.1);
-}
-
-.nickname {
-    color: #d63384;
-    font-weight: 600;
-    margin-bottom: 15px;
-}
-
-.message {
-    color: #444;
-    font-size: 0.95rem;
-    line-height: 1.6;
-    margin-bottom: 20px;
-}
-
-.heart-icon {
-    font-size: 40px;
-    margin-bottom: 10px;
-    animation: pulse 1.5s infinite;
-    display: inline-block;
-}
-
-.footer {
-    font-weight: 600;
-    color: #d63384;
-    font-style: italic;
-}
-
-/* Hiệu ứng mượt mà */
-@keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.15); }
-    100% { transform: scale(1); }
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-#heartCanvas {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+/* Hello Kitty GIF To Ở Góc */
+.kitty-corner {
+    position: fixed;
+    width: 160px; /* To rõ nét */
+    z-index: 999;
     pointer-events: none;
+    animation: float 3s ease-in-out infinite;
+}
+.top-left { top: 10px; left: 10px; }
+.bottom-right { bottom: 10px; right: 10px; }
+
+@keyframes float {
+    0%, 100% { transform: translateY(0) rotate(-5deg); }
+    50% { transform: translateY(-20px) rotate(5deg); }
+}
+
+.container { z-index: 10; width: 95%; max-width: 450px; transition: all 0.8s ease; }
+.container.wide { max-width: 850px; } 
+
+.glass-card { 
+    background: rgba(255, 255, 255, 0.55); 
+    backdrop-filter: blur(15px); 
+    border-radius: 30px; 
+    border: 3px solid #ff85a2; 
+    padding: 40px; 
+    text-align: center; 
+    box-shadow: 0 10px 40px rgba(255, 105, 180, 0.4);
+    position: relative;
+}
+
+.kitty-main { width: 100px; margin-bottom: 10px; }
+
+input {
+    width: 100%; padding: 12px; margin: 10px 0;
+    border-radius: 15px; border: 2px solid #ffafbd;
+    outline: none; font-weight: 600; color: #d63384;
+}
+
+button {
+    background: #ff4d7d; color: white; border: none;
+    padding: 15px 50px; border-radius: 30px;
+    font-weight: bold; cursor: pointer; margin-top: 15px;
+    box-shadow: 0 5px 15px rgba(255, 77, 125, 0.4);
+    font-size: 1.1rem;
+}
+
+.title { font-family: 'Dancing Script', cursive; color: #ff1493; font-size: 3rem; margin-bottom: 10px; }
+.subtitle { color: #d63384; font-weight: 600; margin-bottom: 10px; }
+.name { color: #d63384; font-size: 2.2rem; margin: 10px 0; }
+.nickname { color: #ff85a2; font-weight: bold; margin-bottom: 20px; font-size: 1.3rem; }
+
+.message { 
+    color: #444; line-height: 1.8; font-size: 1.2rem; 
+    text-align: center; padding: 0 10px; font-weight: 600;
+}
+
+.heart-icon { font-size: 60px; animation: pulse 1.5s infinite; }
+
+@keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.2); } }
+#heartCanvas { position: absolute; top: 0; left: 0; pointer-events: none; z-index: 5; }
+b { color: #ff1493; font-size: 1.3rem; }
+
+@media (max-width: 600px) {
+    .kitty-corner { width: 80px; }
+    .container.wide { max-width: 95%; }
+    .message { font-size: 1.05rem; line-height: 1.6; }
 }
