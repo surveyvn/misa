@@ -1,6 +1,7 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 body { 
+    /* Đổi từ hidden sang để đảm bảo không bị lỗi hiển thị trên một số máy */
     overflow: hidden; 
     background: linear-gradient(135deg, #ffdeeb, #ffafbd);
     font-family: 'Quicksand', sans-serif; 
@@ -11,10 +12,10 @@ body {
     width: 100%; 
 }
 
-/* Hello Kitty GIF To Ở Góc */
+/* Kitty ở góc - Đã tối ưu để không che nội dung */
 .kitty-corner {
     position: fixed;
-    width: 160px; /* To rõ nét */
+    width: 150px;
     z-index: 999;
     pointer-events: none;
     animation: float 3s ease-in-out infinite;
@@ -27,18 +28,42 @@ body {
     50% { transform: translateY(-20px) rotate(5deg); }
 }
 
-.container { z-index: 10; width: 95%; max-width: 450px; transition: all 0.8s ease; }
-.container.wide { max-width: 850px; } 
+.container { 
+    z-index: 10; 
+    width: 95%; 
+    max-width: 450px; 
+    display: flex;
+    justify-content: center;
+}
+
+/* QUAN TRỌNG: Cấu hình khung chứa lời chúc */
+.container.wide { 
+    max-width: 850px; 
+    max-height: 90vh; /* Giới hạn chiều cao khung để không tràn màn hình */
+} 
 
 .glass-card { 
     background: rgba(255, 255, 255, 0.55); 
     backdrop-filter: blur(15px); 
     border-radius: 30px; 
     border: 3px solid #ff85a2; 
-    padding: 40px; 
+    padding: 30px 20px; 
     text-align: center; 
     box-shadow: 0 10px 40px rgba(255, 105, 180, 0.4);
     position: relative;
+    width: 100%;
+    /* THÊM THANH CUỘN CHO NỘI DUNG */
+    max-height: 85vh;
+    overflow-y: auto; 
+}
+
+/* Tùy chỉnh thanh cuộn cho đẹp (màu hồng) */
+.glass-card::-webkit-scrollbar {
+    width: 5px;
+}
+.glass-card::-webkit-scrollbar-thumb {
+    background: #ff85a2;
+    border-radius: 10px;
 }
 
 .kitty-main { width: 100px; margin-bottom: 10px; }
@@ -57,24 +82,26 @@ button {
     font-size: 1.1rem;
 }
 
-.title { font-family: 'Dancing Script', cursive; color: #ff1493; font-size: 3rem; margin-bottom: 10px; }
-.subtitle { color: #d63384; font-weight: 600; margin-bottom: 10px; }
-.name { color: #d63384; font-size: 2.2rem; margin: 10px 0; }
-.nickname { color: #ff85a2; font-weight: bold; margin-bottom: 20px; font-size: 1.3rem; }
+.title { font-family: 'Dancing Script', cursive; color: #ff1493; font-size: 2.5rem; margin-bottom: 10px; }
+.name { color: #d63384; font-size: 1.8rem; margin: 5px 0; }
+.nickname { color: #ff85a2; font-weight: bold; margin-bottom: 15px; font-size: 1.1rem; }
 
 .message { 
-    color: #444; line-height: 1.8; font-size: 1.2rem; 
+    color: #444; line-height: 1.7; font-size: 1.1rem; 
     text-align: center; padding: 0 10px; font-weight: 600;
 }
 
-.heart-icon { font-size: 60px; animation: pulse 1.5s infinite; }
+.heart-icon { font-size: 50px; animation: pulse 1.5s infinite; }
 
 @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.2); } }
 #heartCanvas { position: absolute; top: 0; left: 0; pointer-events: none; z-index: 5; }
-b { color: #ff1493; font-size: 1.3rem; }
+b { color: #ff1493; }
 
+/* Responsive cho điện thoại */
 @media (max-width: 600px) {
-    .kitty-corner { width: 80px; }
+    .kitty-corner { width: 70px; } /* Thu nhỏ Kitty trên điện thoại để không chắn tầm nhìn */
     .container.wide { max-width: 95%; }
-    .message { font-size: 1.05rem; line-height: 1.6; }
+    .message { font-size: 1rem; }
+    .title { font-size: 2rem; }
+    .glass-card { padding: 20px 15px; }
 }
