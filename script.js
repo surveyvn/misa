@@ -7,9 +7,8 @@ function startExperience() {
         return;
     }
 
-    // PHÁT NHẠC nhac.mp3
     const audio = document.getElementById("myAudio");
-    audio.play().catch(e => console.log("Lỗi nhạc: ", e));
+    audio.play().catch(e => console.log("Nhạc chờ tương tác..."));
 
     document.getElementById('login-page').style.opacity = '0';
     setTimeout(() => {
@@ -30,7 +29,7 @@ function startExperience() {
     document.getElementById('personalWish').innerHTML = wish;
 }
 
-// TRÁI TIM BAY
+// HIỆU ỨNG TRÁI TIM
 const canvas = document.getElementById('heartCanvas');
 const ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth;
